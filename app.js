@@ -15,6 +15,7 @@ function($scope) {
 	  { title: 'post 5', upvotes: 4},
  	];
 
+ 	// Adds a post to the array of posts
  	$scope.addPost = function() {
  		// prevent user from submitting a post with a blank title
  		// checks if $scope.title is undefined or it is just blank
@@ -23,6 +24,16 @@ function($scope) {
  		$scope.posts.push({ title: $scope.title, upvotes: 0 })
  		// clean up the form input
  		$scope.title = '';
+ 	};
+
+ 	// Increments upvotes for a given post
+ 	$scope.incrementUpvotes = function(post) {
+ 		/*
+			we are passing the current instance of post to the function. 
+			This is happening by reference so when we increment upvotes, 
+			it gets automatically reflected back to the HTML page.
+ 		*/
+ 		post.upvotes++;
  	};
 }]);
 
