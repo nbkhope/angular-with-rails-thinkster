@@ -21,9 +21,15 @@ function($scope) {
  		// checks if $scope.title is undefined or it is just blank
  		if (!$scope.title || $scope.title === '') { return; }
 
- 		$scope.posts.push({ title: $scope.title, upvotes: 0 })
+ 		$scope.posts.push({ 
+ 			title: $scope.title, 
+ 			link: $scope.link,
+ 			upvotes: 0 
+ 		});
+
  		// clean up the form input
  		$scope.title = '';
+ 		$scope.link = '';
  	};
 
  	// Increments upvotes for a given post
