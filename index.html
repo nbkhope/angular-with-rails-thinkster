@@ -12,8 +12,10 @@
 	<!-- Two-way data binding -->
 	{{test}}
 
-	<div ng-repeat="post in posts">
-		{{post}}
+	<!-- uses orderBy filter to order posts by number of upvotes descending 
+			 (hence the negative before upvotes) -->
+	<div ng-repeat="post in posts | orderBy: '-upvotes'">
+		{{post.title}} - upvotes: {{post.upvotes}}
 	</div>
 </body>
 </html>
