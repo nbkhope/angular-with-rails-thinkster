@@ -17,5 +17,8 @@
 	<div ng-repeat="post in posts | orderBy: '-upvotes'">
 		{{post.title}} - upvotes: {{post.upvotes}}
 	</div>
+	
+	<!-- upon click, calls the addPost() function to add a new post to the list -->
+	<button ng-click="addPost()">Post</button>
 </body>
 </html>
