@@ -15,3 +15,11 @@ function($scope) {
 	  'post 5'
 	];
 }]);
+
+/* Notes
+
+The $scope variable serves as the bridge between Angular controllers and 
+Angular templates. If you want something to be accessible in the template 
+such as a function or variable, bind it to $scope.
+
+*/
