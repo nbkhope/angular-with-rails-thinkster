@@ -1,5 +1,7 @@
 # angular-with-rails-thinkster
 
+Using AngularJS and Rails to build a single-page application
+
 ## Project Specifications
 
 * Create new posts
