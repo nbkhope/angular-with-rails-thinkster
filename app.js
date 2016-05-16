@@ -16,7 +16,13 @@ function($scope) {
  	];
 
  	$scope.addPost = function() {
- 		$scope.posts.push({ title: "A new post!", upvotes: 0 })
+ 		// prevent user from submitting a post with a blank title
+ 		// checks if $scope.title is undefined or it is just blank
+ 		if (!$scope.title || $scope.title === '') { return; }
+
+ 		$scope.posts.push({ title: $scope.title, upvotes: 0 })
+ 		// clean up the form input
+ 		$scope.title = '';
  	};
 }]);
 
