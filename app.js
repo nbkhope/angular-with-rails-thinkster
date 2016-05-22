@@ -9,6 +9,11 @@ function($stateProvider, $urlRouterProvider) {
 	  	url: '/home',
 	  	templateUrl: '/home.html',
 	  	controller: 'MainCtrl'
+	  })
+	  .state('posts', {
+	  	url: '/posts/{id}', // {id} is a route parameter
+	  	templateUrl: '/posts.html',
+	  	controller: 'PostsCtrl'
 	  });
 
 	// Use otherwise() to redirect unspecified routes.
@@ -90,7 +95,11 @@ function($scope, posts) {
  		$scope.posts.push({ 
  			title: $scope.title, 
  			link: $scope.link,
- 			upvotes: 0 
+ 			upvotes: 0,
+ 			comments: [
+ 				{ author: 'Joe', body: 'Cool post!', upvotes: 0 },
+ 				{ author: 'Bob', body: 'Sounds good, but everything is wrong!', upvotes: 0 },
+ 			]
  		});
 
  		// clean up the form input
@@ -107,6 +116,17 @@ function($scope, posts) {
  		*/
  		post.upvotes++;
  	};
+}])
+
+.controller('PostsCtrl', [
+'$scope',
+'$stateParams',
+'posts', // factory
+function($scope, $stateParams, posts) {
+
+	// Retrieve a post from the array of posts using the {id} in the URL as the index
+	$scope.post = posts.posts[$stateParams.id];
+
 }]);
 
 /* Notes
