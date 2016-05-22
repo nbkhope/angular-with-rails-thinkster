@@ -127,6 +127,19 @@ function($scope, $stateParams, posts) {
 	// Retrieve a post from the array of posts using the {id} in the URL as the index
 	$scope.post = posts.posts[$stateParams.id];
 
+	$scope.addComment = function() {
+		if ($scope.body === '') { return; }
+
+		$scope.post.comments.push({
+			body: $scope.body,
+			author: 'user',
+			upvotes: 0
+		});
+
+		// Clean up the new-comment form
+		$scope.body = '';
+	}
+
 }]);
 
 /* Notes
