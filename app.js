@@ -1,4 +1,21 @@
-angular.module('flapperNews', [])
+angular.module('flapperNews', ['ui.router'])
+.config([
+'$stateProvider',
+'$urlRouterProvider',
+function($stateProvider, $urlRouterProvider) {
+
+	$stateProvider
+	  .state('home', {
+	  	url: '/home',
+	  	templateUrl: '/home.html',
+	  	controller: 'MainCtrl'
+	  });
+
+	// Use otherwise() to redirect unspecified routes.
+	$urlRouterProvider.otherwise('home');
+
+}])
+
 .factory('posts', [function() {
 	// service body
 

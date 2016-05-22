@@ -15,6 +15,8 @@
 
 	<!-- AngularJS -->
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+	<!-- Angular ui-router -->
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
 	<!-- Custom script -->
   <script src="app.js"></script>
 </head>
@@ -24,60 +26,64 @@
 		<!-- Center the content -->
 		<div class="col-md-6 col-md-offset-3">
 
-		<!-- A page header is like a section divider. 
-				 The .page-header class adds a horizontal line under the heading 
-				 (+ adds some extra space around the element) -->
-			<div class="page-header">
-				<h1>Flapper News</h1>
-			</div>
-
-			<!-- Two-way data binding -->
-			<!-- {{test}} -->
-
-			<!-- uses orderBy filter to order posts by number of upvotes descending 
-					 (hence the negative before upvotes) -->
-			<div ng-repeat="post in posts | orderBy: '-upvotes'">
-				<span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(post)"></span>
-				{{post.upvotes}}
-
-				<span style="font-size: 20px; margin-left: 10px;">
-					<!-- Make it a link only if $scope.post.link is defined -->
-					<a ng-show="post.link" href="{{post.link}}">
-						{{post.title}}
-					</a>
-					<!-- Otherwise, if $scope.post.link is undefined, only display a span -->
-					<!-- same as <span ng-show="!post.link"> -->
-					<span ng-hide="post.link">
-						{{post.title}}
-					</span>
-				</span>
-			  
-			</div>
-
-	<!-- Notes
-		directives: ng-show (show elements when an Angular expression evaluates to true), 
-
-								ng-hide (hides elements when an Angular expression evaluates to true)
-	-->
-
-			<!-- upon form submission, calls the addPost() function to 
-					 add a new post to the list with the given title -->	
-			<form ng-submit="addPost()" style="margin-top: 30px;">
-				<h3>Add a new post</h3>
-
-				<div class="form-group">
-					<!-- binds the input to the "title" variable ($scope.title) -->
-					<input type="text" class="form-control" ng-model="title" placeholder="Title">
-				</div>
-
-				<div class="form-group">
-					<input type="text" class="form-control" ng-model="link" placeholder="Link"><br>
-				</div>
-
-				<button type="submit" class="btn btn-primary">Post</button>
-			</form>
+		<ui-view></ui-view>
 
 		</div><!-- col.* -->
 	</div><!-- .row -->
+
+	<script type="text/ng-template" id="/home.html">
+		<!-- A page header is like a section divider. 
+			 The .page-header class adds a horizontal line under the heading 
+			 (+ adds some extra space around the element) -->
+		<div class="page-header">
+			<h1>Flapper News</h1>
+		</div>
+
+		<!-- Two-way data binding -->
+		<!-- {{test}} -->
+
+		<!-- uses orderBy filter to order posts by number of upvotes descending 
+				 (hence the negative before upvotes) -->
+		<div ng-repeat="post in posts | orderBy: '-upvotes'">
+			<span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(post)"></span>
+			{{post.upvotes}}
+
+			<span style="font-size: 20px; margin-left: 10px;">
+				<!-- Make it a link only if $scope.post.link is defined -->
+				<a ng-show="post.link" href="{{post.link}}">
+					{{post.title}}
+				</a>
+				<!-- Otherwise, if $scope.post.link is undefined, only display a span -->
+				<!-- same as <span ng-show="!post.link"> -->
+				<span ng-hide="post.link">
+					{{post.title}}
+				</span>
+			</span>
+		  
+		</div>
+
+<!-- Notes
+	directives: ng-show (show elements when an Angular expression evaluates to true), 
+
+							ng-hide (hides elements when an Angular expression evaluates to true)
+-->
+
+		<!-- upon form submission, calls the addPost() function to 
+				 add a new post to the list with the given title -->	
+		<form ng-submit="addPost()" style="margin-top: 30px;">
+			<h3>Add a new post</h3>
+
+			<div class="form-group">
+				<!-- binds the input to the "title" variable ($scope.title) -->
+				<input type="text" class="form-control" ng-model="title" placeholder="Title">
+			</div>
+
+			<div class="form-group">
+				<input type="text" class="form-control" ng-model="link" placeholder="Link"><br>
+			</div>
+
+			<button type="submit" class="btn btn-primary">Post</button>
+		</form>
+	</script>
 </body>
 </html>
