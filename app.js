@@ -138,7 +138,12 @@ function($scope, $stateParams, posts) {
 
 		// Clean up the new-comment form
 		$scope.body = '';
-	}
+	};
+
+	// Increments upvotes for a given comment
+ 	$scope.incrementUpvotes = function(comment) {
+ 		comment.upvotes++;
+ 	};
 
 }]);
 
