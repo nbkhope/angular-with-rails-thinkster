@@ -54,6 +54,7 @@ function($scope, posts) {
 			This is happening by reference so when we increment upvotes, 
 			it gets automatically reflected back to the HTML page.
  		*/
- 		post.upvotes++;
+ 		// post.upvotes++;
+ 		posts.upvote(post);
  	};
 }]);
