@@ -1,12 +1,13 @@
 angular.module('flapperNews')
 .controller('PostsCtrl', [
 '$scope',
-'$stateParams',
 'posts', // factory
-function($scope, $stateParams, posts) {
+'post', // directly injected from resolve in the state config
+function($scope, posts, post) {
 
 	// Retrieve a post from the array of posts using the {id} in the URL as the index
-	$scope.post = posts.posts[$stateParams.id];
+	//$scope.post = posts.posts[$stateParams.id];
+	$scope.post = post; 
 
 	$scope.addComment = function() {
 		if ($scope.body === '') { return; }

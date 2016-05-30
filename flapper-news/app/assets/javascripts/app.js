@@ -21,7 +21,13 @@ function($stateProvider, $urlRouterProvider) {
 	  .state('posts', {
 	  	url: '/posts/{id}', // {id} is a route parameter
 	  	templateUrl: 'posts/_posts.html',
-	  	controller: 'PostsCtrl'
+	  	controller: 'PostsCtrl',
+	  	resolve: {
+	  		// Only after the request has returned will the state finish loading.
+	  		post: ['$stateParams', 'posts', function($stateParams, posts) {
+	  			return posts.get($stateParams.id);
+	  		}]
+	  	}
 	  });
 
 	// Use otherwise() to redirect unspecified routes.

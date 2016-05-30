@@ -28,6 +28,14 @@ angular.module('flapperNews')
 		  });
 	};
 
+	o.get = function(id) {
+		// instead of using the success() method we have traditionally used, 
+		// we are instead using a promise.
+		return $http.get('/posts/' + id + '.json').then(function(res) {
+			return res.data;
+		});
+	};
+
 	// Return the factory object
 	return o;
 }]);
