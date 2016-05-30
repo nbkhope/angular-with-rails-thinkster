@@ -12,19 +12,28 @@ function($scope, posts, post) {
 	$scope.addComment = function() {
 		if ($scope.body === '') { return; }
 
-		$scope.post.comments.push({
+		posts.addComment(post.id, {
 			body: $scope.body,
-			author: 'user',
-			upvotes: 0
+			author: 'user'
+		}).success(function(comment) {
+			$scope.post.comments.push(comment)
+
+			// Clean up the new-comment form
+			$scope.body = '';
 		});
 
-		// Clean up the new-comment form
-		$scope.body = '';
+		// $scope.post.comments.push({
+		// 	body: $scope.body,
+		// 	author: 'user',
+		// 	upvotes: 0
+		// });
+
+		
 	}
 
 	// Increments upvotes for a given comment
  	$scope.incrementUpvotes = function(comment) {
- 		comment.upvotes++;
+ 		posts.upvoteComment(post, comment);
  	};
 
 }]);
