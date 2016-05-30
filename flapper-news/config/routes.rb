@@ -2,6 +2,22 @@ Rails.application.routes.draw do
 
   root to: 'application#angular'
 
+  resources :posts, only: [:create, :index, :show] do
+    resources :comments, only: [:show, :create] do
+      # create our own put routes for upvoting. 
+      # Putting it in a member block makes it so our url parameters map 
+      # to :id instead of :post_id.
+      member do
+        put '/upvote' => 'comments#upvote'
+      end
+    end
+
+    # create our own put routes for upvoting. 
+    member do
+      put '/upvote' => 'posts#upvote'
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
