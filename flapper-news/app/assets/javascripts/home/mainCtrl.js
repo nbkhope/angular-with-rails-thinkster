@@ -27,15 +27,20 @@ function($scope, posts) {
  		// checks if $scope.title is undefined or it is just blank
  		if (!$scope.title || $scope.title === '') { return; }
 
- 		$scope.posts.push({ 
- 			title: $scope.title, 
- 			link: $scope.link,
- 			upvotes: 0,
- 			comments: [
- 				{ author: 'Joe', body: 'Cool post!', upvotes: 0 },
- 				{ author: 'Bob', body: 'Sounds good, but everything is wrong!', upvotes: 0 },
- 			]
+ 		posts.create({
+ 			title: $scope.title,
+ 			link: $scope.link
  		});
+
+ 		// $scope.posts.push({ 
+ 		// 	title: $scope.title, 
+ 		// 	link: $scope.link,
+ 		// 	upvotes: 0,
+ 		// 	comments: [
+ 		// 		{ author: 'Joe', body: 'Cool post!', upvotes: 0 },
+ 		// 		{ author: 'Bob', body: 'Sounds good, but everything is wrong!', upvotes: 0 },
+ 		// 	]
+ 		// });
 
  		// clean up the form input
  		$scope.title = '';

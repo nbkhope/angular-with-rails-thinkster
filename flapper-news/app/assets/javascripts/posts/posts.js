@@ -1,5 +1,5 @@
 angular.module('flapperNews')
-.factory('posts', [function() {
+.factory('posts', ['$http', function($http) {
 	// service body
 
 	// Make the factory object
@@ -7,6 +7,18 @@ angular.module('flapperNews')
 		// by exporting an object that contains the posts array we can 
 		// add new objects and methods to our services in the future.
 		posts: []
+	};
+
+	o.getAll = function() {
+		return $http.get('/posts.json').success(function(data) {
+			angular.copy(data, o.posts);
+		});
+	};
+
+	o.create = function(post) {
+		return $http.post('/posts.json', post).success(function(data) {
+			o.posts.push(data);
+		});
 	};
 
 	// Return the factory object
