@@ -2,6 +2,8 @@
 
 Using AngularJS and Rails to build a single-page application
 
+[See the code.](flappernews/)
+
 ## Project Specifications
 
 * Create new posts
@@ -10,6 +12,12 @@ Using AngularJS and Rails to build a single-page application
 * View comments for a given post
 * Upvote posts and comments
 * Create a user authentication system using Devise
+
+## Screenshots
+
+![Screenshot 01](screenshots/flappernews_01.png)
+
+![Screenshot 02](screenshots/flappernews_02.png)
 
 ## Installation
 
