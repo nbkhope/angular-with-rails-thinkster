@@ -2,7 +2,7 @@
 
 Using AngularJS and Rails to build a single-page application
 
-[See the code.](flappernews/)
+[See the code.](flapper-news/)
 
 ## Project Specifications
 
